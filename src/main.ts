@@ -11,24 +11,25 @@ import { inject, Injectable } from '@angular/core';
 var chartDom = document.getElementById('displayArea')!;
 var chart = echarts.init(chartDom);
 
-let size = 2000000;
+let size = 8000000;
 
 var chartData=Array<Array<number>>(size);
 
 for( let i=0; i < size; ++i){
-  chartData[i] = [i/size, i/size, i/size];
+  chartData[i] = [i/size, 100*i/size];
 }
 
 chart.setOption({
-    grid3D: {},
-    xAxis3D: {},
-    yAxis3D: {},
-    zAxis3D: {},
+  xAxis:{},
+  yAxis: {},
+  xAxisIndex: 0,
+  yAxisIndex: 1,
     series: [{
-        type: 'scatter3D',
+        type: 'scatterGL',
         symbolSize: 3,
         showSymbol: false,
         data: chartData,
+        coordinateSystem: 'cartesian2d',
         sampling: 'average',
         large: true,
         itemStyle: {
