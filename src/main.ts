@@ -26,8 +26,11 @@ chart.setOption({
     zAxis3D: {},
     series: [{
         type: 'scatter3D',
-        symbolSize: 10,
+        symbolSize: 3,
+        showSymbol: false,
         data: chartData,
+        sampling: 'average',
+        large: true,
         itemStyle: {
             opacity: 1
         }
